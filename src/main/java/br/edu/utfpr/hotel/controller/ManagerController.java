@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +22,9 @@ import br.edu.utfpr.hotel.dto.response.MessageResponseDTO;
 import br.edu.utfpr.hotel.exception.ManagerNotFoundException;
 import br.edu.utfpr.hotel.service.ManagerService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/manager")
+@RequestMapping("/api/manager")
 public class ManagerController {
 	
 

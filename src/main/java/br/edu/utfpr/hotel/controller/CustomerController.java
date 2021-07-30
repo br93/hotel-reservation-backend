@@ -23,8 +23,7 @@ import br.edu.utfpr.hotel.exception.CustomerNotFoundException;
 import br.edu.utfpr.hotel.service.CustomerService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/customer/register")
+@RequestMapping("/api/customer")
 public class CustomerController {
 	
 	private CustomerService customerService;

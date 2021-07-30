@@ -1,6 +1,5 @@
 package br.edu.utfpr.hotel.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,9 +27,6 @@ public class Customer {
 	@Column(nullable = false)
 	private String lastName;
 
-	@Column(nullable = false)
-	private LocalDate birthDate;
-
 	@Column(nullable = false, unique = true)
 	private String cpf;
 
@@ -46,7 +42,7 @@ public class Customer {
 	@Column(nullable = false)
 	private String password;
 
-	@Column
+	@Column(nullable = true)
 	private double bill;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
@@ -56,19 +52,18 @@ public class Customer {
 
 	}
 
-	public Customer(Long id, String firstName, String lastName, LocalDate birthDate, String cpf, String email,
-			List<Phone> phones, String address, String password, double bill, Room room) {
+	public Customer(Long id, String firstName, String lastName, String cpf, String email,
+			List<Phone> phones, String address, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.birthDate = birthDate;
 		this.cpf = cpf;
 		this.email = email;
 		this.phones = phones;
 		this.address = address;
 		this.password = password;
-		this.bill = bill;
-		this.room = room;
+		this.bill = 0.00;
+		this.room = null;
 	}
 
 	public Long getId() {
@@ -93,14 +88,6 @@ public class Customer {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
 	}
 
 	public String getCpf() {

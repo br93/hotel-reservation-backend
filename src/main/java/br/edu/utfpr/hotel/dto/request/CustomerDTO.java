@@ -25,9 +25,6 @@ public class CustomerDTO {
 	private String lastName;
 
 	@NotEmpty
-	private LocalDate birthDate;
-
-	@NotEmpty
 	@CPF
 	private String cpf;
 
@@ -45,7 +42,6 @@ public class CustomerDTO {
 	@Size(min = 8, max = 64)
 	private String password;
 
-	@NotEmpty
 	private double bill;
 
 	private Room room;
@@ -55,21 +51,19 @@ public class CustomerDTO {
 	}
 
 	public CustomerDTO(Long id, @NotEmpty @Size(min = 2, max = 50) String firstName,
-			@NotEmpty @Size(min = 2, max = 50) String lastName, @NotEmpty LocalDate birthDate,
-			@NotEmpty @CPF String cpf, @NotEmpty String email, @Valid @NotEmpty List<Phone> phones,
-			@NotEmpty String address, @NotEmpty @Size(min = 8, max = 64) String password, @NotEmpty double bill,
-			Room room) {
+			@NotEmpty @Size(min = 2, max = 50) String lastName, @NotEmpty @CPF String cpf, @NotEmpty String email,
+			@Valid @NotEmpty List<Phone> phones, @NotEmpty String address,
+			@NotEmpty @Size(min = 8, max = 64) String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.birthDate = birthDate;
 		this.cpf = cpf;
 		this.email = email;
 		this.phones = phones;
 		this.address = address;
 		this.password = password;
-		this.bill = bill;
-		this.room = room;
+		this.bill = 0.00;
+		this.room = null;
 	}
 
 	public Long getId() {
@@ -94,14 +88,6 @@ public class CustomerDTO {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
 	}
 
 	public String getCpf() {

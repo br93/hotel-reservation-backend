@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +22,9 @@ import br.edu.utfpr.hotel.dto.response.MessageResponseDTO;
 import br.edu.utfpr.hotel.exception.RoomNotFoundException;
 import br.edu.utfpr.hotel.service.RoomService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/room")
+@RequestMapping("/api/room")
 public class RoomController {
 
 	private RoomService roomService;
